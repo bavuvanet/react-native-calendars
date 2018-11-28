@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
   ScrollView,
-  View
+  View,
+  Alert
 } from 'react-native';
-import {Calendar} from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 
 export default class CalendarsScreen extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class CalendarsScreen extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.text}>Calendar with selectable date and arrows</Text>
+        {/* <Text style={styles.text}>Calendar with selectable date and arrows</Text>
         <Calendar
           onDayPress={this.onDayPress}
           style={styles.calendar}
@@ -95,34 +96,38 @@ export default class CalendarsScreen extends Component {
             '2012-05-09': {dots: [{key: 'vacation', color: 'blue', selectedDotColor: 'red'}, {key: 'massage', color: 'red', selectedDotColor: 'blue'}], disabled: true}
           }}
           hideArrows={false}
-        />
+        /> */}
         <Text style={styles.text}>Calendar with multi-period marking</Text>
         <Calendar
+          onPressDate={this.onPressDate}
           style={styles.calendar}
-          current={'2012-05-16'}
+          current={'2018-09-01'}
+          firstDay={1}
           markingType={'multi-period'}
-          markedDates={{  
-            '2012-05-16': {  
-              periods: [  
-                { startingDay: true, endingDay: false, color: '#5f9ea0' },
-                { startingDay: true, endingDay: false, color: '#ffa500' },
+          // markedDates={{[this.state.selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}}}
+          markedDates={{
+            '2018-05-16': {
+              periods: [
+                { startingDay: true, endingDay: false, color: '#5f9ea0', text: 'Event 1' },
+                // { startingDay: true, endingDay: false, color: '#ffa500', text: '' },
+              ],
+            },
+            '2018-05-17': {
+              periods: [
+                { startingDay: false, endingDay: true, color: '#5f9ea0', text: ' ' },
+                // { startingDay: false, endingDay: true, color: '#ffa500' },
+                // { startingDay: true, endingDay: false, color: '#f0e68c' },
               ]
             },
-            '2012-05-17': {  
-              periods: [  
-                { startingDay: false, endingDay: true, color: '#5f9ea0' },
-                { startingDay: false, endingDay: true, color: '#ffa500' },
-                { startingDay: true, endingDay: false, color: '#f0e68c' },
-              ]
-            },
-            '2012-05-18': {  
-              periods: [  
-                { startingDay: true, endingDay: true, color: '#ffa500' },
-                { color: 'transparent' },
-                { startingDay: false, endingDay: false, color: '#f0e68c' },
+            '2018-05-18': {
+              periods: [
+                { startingDay: true, endingDay: true, color: '#ffa500', text: 'Event 3' },
+                // { color: 'transparent' },
+                // { startingDay: false, endingDay: false, color: '#f0e68c' },
               ]
             },
           }}
+          // hideExtraDays
           hideArrows={false}
         />
         <Text style={styles.text}>Calendar with week numbers</Text>
@@ -131,7 +136,7 @@ export default class CalendarsScreen extends Component {
           style={styles.calendar}
           hideExtraDays
           showWeekNumbers
-          markedDates={{[this.state.selected]: {selected: true}}}
+          markedDates={{ [this.state.selected]: { selected: true } }}
         />
         <Text style={styles.text}>Custom calendar with custom marking type</Text>
         <Calendar
@@ -153,7 +158,7 @@ export default class CalendarsScreen extends Component {
                 },
               }
             },
-            '2018-03-08': {selected: true},
+            '2018-03-08': { selected: true },
             '2018-03-09': {
               customStyles: {
                 container: {
@@ -165,7 +170,7 @@ export default class CalendarsScreen extends Component {
                 },
               }
             },
-            '2018-03-10': {disabled: true},
+            '2018-03-10': { disabled: true },
             '2018-03-14': {
               customStyles: {
                 container: {
@@ -198,7 +203,7 @@ export default class CalendarsScreen extends Component {
                 },
               }
             },
-            '2018-03-21': {disabled: true},
+            '2018-03-21': { disabled: true },
             '2018-03-28': {
               customStyles: {
                 container: {
@@ -246,7 +251,8 @@ export default class CalendarsScreen extends Component {
                   color: 'white',
                 },
               },
-            }}}
+            }
+          }}
           hideArrows={false}
         />
       </ScrollView>
@@ -257,6 +263,19 @@ export default class CalendarsScreen extends Component {
     this.setState({
       selected: day.dateString
     });
+  }
+
+  onPressDate = () => {
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
+      { cancelable: false }
+    )
   }
 }
 
