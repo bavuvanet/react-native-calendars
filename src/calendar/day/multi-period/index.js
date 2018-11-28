@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import {shouldUpdate} from '../../../component-updater';
+import { shouldUpdate } from '../../../component-updater';
 
 import styleConstructor from './style';
 
@@ -45,6 +45,7 @@ class Day extends Component {
           ...baseDotStyle,
           {
             backgroundColor: period.color,
+            padding: 2
           },
         ];
         if (period.startingDay) {
@@ -61,7 +62,17 @@ class Day extends Component {
             marginRight: 4,
           });
         }
-        return <View key={index} style={style} />;
+        return <TouchableOpacity activeOpacity={0.7} key={index} style={style} >
+          <Text
+            style={{
+              color: 'white',
+              fontWeight: '500',
+              fontSize: 10,
+            }}
+            numberOfLines={1}>
+            {period.text}
+          </Text>
+        </TouchableOpacity>;
       });
     }
     return;
