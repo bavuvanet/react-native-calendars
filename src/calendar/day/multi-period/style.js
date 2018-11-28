@@ -40,7 +40,7 @@ export default function styleConstructor(theme = {}) {
     },
     dot: {
       // width: 42,
-      height: 4,
+//       height: 4,
       marginVertical: 1,
       // borderRadius: 2,
       opacity: 0,
