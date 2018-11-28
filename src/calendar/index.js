@@ -238,6 +238,7 @@ class Calendar extends Component {
   }
 
   render() {
+    let {...otherProps} = this.props;
     const days = dateutils.page(this.state.currentMonth, this.props.firstDay);
     const weeks = [];
     while (days.length) {
@@ -267,6 +268,7 @@ class Calendar extends Component {
           weekNumbers={this.props.showWeekNumbers}
           onPressArrowLeft={this.props.onPressArrowLeft}
           onPressArrowRight={this.props.onPressArrowRight}
+          {...otherProps}
         />
         <View style={this.style.monthView}>{weeks}</View>
       </View>);
