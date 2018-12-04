@@ -50,15 +50,15 @@ class Day extends Component {
         ];
         if (period.startingDay) {
           style.push({
-            borderTopLeftRadius: 2,
-            borderBottomLeftRadius: 2,
+            borderTopLeftRadius: 8,
+            borderBottomLeftRadius: 8,
             marginLeft: 4,
           });
         }
         if (period.endingDay) {
           style.push({
-            borderTopRightRadius: 2,
-            borderBottomRightRadius: 2,
+            borderTopRightRadius: 8,
+            borderBottomRightRadius: 8,
             marginRight: 4,
           });
         }
@@ -101,7 +101,8 @@ class Day extends Component {
     return (
       <View
         style={{
-          alignSelf: 'stretch'
+          alignSelf: 'stretch',
+          alignItems: 'center',
         }}>
         <TouchableOpacity style={containerStyle} onPress={this.onDayPress}>
           <Text allowFontScaling={false} style={textStyle}>
