@@ -17,10 +17,10 @@ export const textDayFontFamily = 'System';
 export const textMonthFontFamily = 'System';
 export const textDayHeaderFontFamily = 'System';
 
-export const textMonthFontWeight = '300';
+export const textMonthFontWeight = '500';
 
 export const textDayFontSize = 16;
-export const textMonthFontSize = 16;
+export const textMonthFontSize = 20;
 export const textDayHeaderFontSize = 13;
 
 export const calendarBackground = foregroundColor;
