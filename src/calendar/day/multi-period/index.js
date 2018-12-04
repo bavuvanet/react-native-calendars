@@ -62,7 +62,7 @@ class Day extends Component {
             marginRight: 4,
           });
         }
-        return <TouchableOpacity activeOpacity={0.7} key={index} style={style} >
+        return <TouchableOpacity activeOpacity={0.7} key={index} style={style} onPress={() => period.onPressPeriod(period.item)} >
           <Text
             style={{
               color: 'white',
